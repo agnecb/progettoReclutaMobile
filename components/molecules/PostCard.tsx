@@ -108,7 +108,7 @@ export default function PostCard({ id, content, created_at, likes = 0, comments 
             setDraft(postContent);
         }
     }, [openEdit, postContent]);
-    
+
     const handleCloseEdit = () => {
         if (isModified) {
             Alert.alert(
@@ -336,7 +336,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 15,
         minHeight: 120,
-        textAlignVertical: "top", 
+        textAlignVertical: "top",
         fontSize: 16,
         marginBottom: 20,
     },

@@ -1,10 +1,27 @@
 import { colors } from '@/constants/theme';
+import { useAuth } from '@/context/AuthContext';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect } from 'react';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import Button from '../components/button';
 
-export default function IndexScreen() {   
+export default function IndexScreen() {
+    const { isAuthenticated, loading } = useAuth();
+
+    useEffect(() => {
+        if (!loading && isAuthenticated) {
+            router.replace("/(tabs)/home"); // redirect alla home
+        }
+    }, [isAuthenticated, loading]);
+    if (loading || isAuthenticated) {
+        return (
+            <View style={styles.centerContainer}>
+                <ActivityIndicator size="large" color={colors.onPrimary} />
+            </View>
+        );
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
@@ -79,5 +96,11 @@ const styles = StyleSheet.create({
     },
     tempButton: {
         backgroundColor: colors.onPrimary2,
+    },
+    centerContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: colors.background,
     },
 });

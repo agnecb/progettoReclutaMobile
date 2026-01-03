@@ -132,7 +132,7 @@ export default function UserProfileScreen() {
                 <View>
                     <Text style={styles.postNumber}>Post ({posts.length})</Text>
                     {posts.map((post) => (
-                        <PostCard key={post.id} {...post} />
+                        <PostCard key={post.id} {...post}/>
                     ))}
                 </View>
 
