@@ -94,6 +94,10 @@ const styles = StyleSheet.create({
         backgroundColor: colors.background2,
         alignItems: "center",
         justifyContent: "center",
+        shadowColor: "#000",
+        shadowOpacity: 0.1,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 5,
     },
     avatarText: {
         fontWeight: "600",
